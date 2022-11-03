@@ -1,0 +1,209 @@
+netsh winsock reset (correr este comando en powershell si UBUNTU no responde) 
+
+	ESTRUCTURA INICIAL PARA CUALQUIER .py
+
+def run():
+    pass
+
+
+if __name__ == '__main__':
+    run()
+
+	OPERACIONES DENTRO DE CMDER
+
+code . --> inicia Visual Studio Code desde el directorio
+ctrl+l --> limpiar consola cmder
+cd .. --> moverse a la carpeta padre/anterior
+cd *NombreDeCarpeta --> ingresa a la carpeta dentro de la dirección actual
+ls --> muestra los archivos dentro del directorio
+ls -al --> muestra todos los archivos (incluso los ocultos)
+mkdir *NombreDeCarpeta --> crea una carpeta dentro del directorio
+touch *NombreArchivo.extension --> crea archivo de cualquier extensión
+py --> invocar Python
+exit() --> cerrar Python
+*Variable1 = int(Variable1) --> convierte str a int
+int(*Decimal) --> convierte de float a int
+str(*Variable) --> convierte de float/int a str
+round(*Variable, *NúmeroDeDecimalesQueQuieres) --> reduce el número de decimales
+= --> asignar valor
+== --> igualdad
+!= --> diferencia
+>= --> mayor o igual
+<= --> menor o igual
+py *Archivo.py --> ejecuta el código desde la consola
+*Variable.upper() --> convierte el str a mayúscula
+*Variable.lower() --> convierte el str a minúscula
+*Variable.capitalize() --> convierte primera letra a mayúscula
+*Variable.strip() --> elimina espacios al final y principio de la cadena
+*Variable.replace("x", "y") --> reemplaza caracteres
+len(*Variable) --> retorna el número de caracteres
+*Variable[::-1] --> hacer alreves un str
+ctrl+k ctrl+c --> comenta un bloque de código
+ctrl+k ctrl+U --> descomenta un bloque de código
+*Variable += 1 --> *Variable = *Variable + 1
+*Variable.append(X) --> agrega un elemento al final de la lista
+*Variable.pop(*Indice) --> elimina elementos de una lista según su índice
+print('\n') --> salto de línea
+
+	COMPREHENSIONS
+
+for lists --> [element for element in iterable if condition]
+for dictionaries --> {key:value for value in iterable if condition}
+| --> sumar diccionarios
+
+	ASSERT STATEMENTS
+
+asser *Condición, *Mensaje --> Valida una condición para seguir la ejecución
+*Variable.isnumeric() --> valida si una entrada es un número entero positivo
+*Variable.isalpha() --> valida si una entrada es una letra
+
+	MODOS DE APERTURA DE ARCHIVOS
+
+R --> Lectura
+W --> sobreescribe
+A --> escritura (se agregan cambios al documento original como un .append())
+with open(*RutaDeArchivo, *ModoDeAperturaEnComillas) as *AliasDelArchivo:
+*AliasDelArchivo.write --> escribe elementos en un archivo
+
+	COMANDOS TERMINAL (ubuntu)
+
+pip3 install matplotlib --> comando para instalar módulos
+pip3 install matplotlib==3.5.0 --> instala una versión predeterminada de un módulo y desinstala la anterior
+pip3 freeze --> muestra los módulos instalados
+python3 --> obtener versión de python
+pip3 -V --> obtener versión de pip
+which python3 --> muestra desde dónde se está ejecutando python/entorno global
+alias mnt='cd /mnt/c' --> declara alias para funciones
+whatis ls --> describe una funcion
+man ls --> muestra la descripción detallada de una función
+ls *.txt --> muestra todos los archivos de determinada extensión
+ls datos* --> muestra los archivos que contengan una palabra en su nombre
+ls -d [[:upper:]]* --> muestra los directorios que inician con mayúscula
+ls [ad]* --> lista los archivos que inicien con alguna de las letras
+ls > listado.txt --> crea un listado con el contenido de archivos
+echo "Hola mundo" --> imprime una entrada
+cowsay 'No digas mamadas meriyein' --> hacer que una vaca diga cosas
+cowsay "¿Qué hace mi chunchullo frito?" | lolcat --> ahora las dice en color
+ls; mkdir holi; cal --> ejecutar varias tareas
+ls & date & cal --> corre comandos de manera asincrona
+mkdir test && cd test --> crea comandos de manera condicional
+cd || touch hola.txt || echo "archivo creado" --> ejecuta comandos con la condición 'O'
+python3 --> inicia python
+sudo apt update --> busca actualizaciones
+sudo apt -y upgrade --> instala actualizaciones
+python3 -V --> retorna version de python
+sudo apt install -y python3-pip --> instalar gestor de dependencias de python
+pip3 -V --> retorna version instalada del gestor pip
+sudo apt install -y build-essential libssl-dev libffi-dev python3-dev --> instalar librerias esenciales de desarrollo
+rm vacio.txt --> eliminar archivos
+rm -rf directorio --> elimina directirios
+
+	INICIAR REPOSITORIO GIT HUB
+
+git init --> iniciar repositorio en el ambiente local
+git add * OR git add .--> agrega todos los archivos al repositorio local
+git add archivo.txt --> agrega un archivo al repositorio local
+git status --> indica el estado del repositorio
+git rm archivo.txt --> para remover archivo del repositorio
+git rm --cached archivo.txt --> borra el cache del archivo
+git config --> muestra las opciones de configuración
+git config --list --> muestra la configuración de mi repositorio
+git config --list --show-origin --> muestra donde están guardadas las configuraciones
+git config --global user.name "fernando" --> asigna nombre de usuario
+git config --global user.email "gfesquivelt@unal.edu.co" --> asigna correo de usuario
+cat archivo.txt --> muestra el contenido del archivo
+git log archivo.txt --> muestra el historial de cambios
+git remote add origin https://github.com/gfesquivelt/curso-python-pip.git --> agregar origen del repositorio remoto
+git remote -v --> muestra el origen del repositorio remoto
+git push origin master --> envía los archivos del repo local al repo remoto (en caso de ser necesario, generar token)
+git clone https://<username>:<githubtoken>@github.com/<username>/<repositoryname>.git --> utilizar esta lógica en caso que no almacene el token
+
+# NO OLVIDES LA SECUENCIA PARA AGREGAR CAMBIOS AL REPOSITORIO REMOTO
+1) git add . --> agrega cambios al repo local
+2) git commit -m 'mensaje' --> envia la información al origen
+3) git puhs origin master --> empuja la información del origen al repo remoto
+# https://www.toptal.com/developers/gitignore --> genera un listado de archivos para ignorar (windows, linux, MacOS, python)
+# luego, crear un .gitignore en la carpeta del proyecto y copiar el resultado del punto anterior
+# utiliza backticks para agregar instrucciones legibles en README:
+```sh     --> el 'sh' indica que es lenguaje de terminal, así que se debe agregar la extensión (ej: py, html, js, etc.)
+cd game
+python3 main.py
+```
+# https://pypi.org/project/arcpy-virtualenv/#description --> sitio web para consultar todos los módulos disponibles para python
+
+	ENTORNO VIRTUAL (WINDOWS)
+
+py -m venv --> llama el modulo del entorno virtual
+py -m venv venv --> crea una carpeta con un ambiente virtual llamado 'venv'
+.\venv\scripts\activate --> activar el entorno virtual
+alias avenv=.\venv\scripts\activate --> crea un alias para activar el entorno virtual
+deactivate --> desactivar el entorno virtual
+pip freeze --> muestra los módulos instalados
+pip install pandas --> instala el módulo 'pandas'
+pip freeze > requirements.txt --> crea un .txt con los módulos y versiones instaladas
+cat documento.txt --> abre un documento en la consola
+pip install -r requirements.txt --> instala los modulos con las versiones del .txt
+
+	ENTORNO VIRTUAL CONDA (se abre desde conda power shell)
+
+conda --version --> version de conda
+conda list --> lista los comando instalados en el ambiente
+conda create --name platzi_data beautifulsoup4 requests numpy pandas matplotlib --> crea ambiente e instala algunos modulos
+conda activate platzi_data --> activa ambiente
+conda deactivate --> desactiva ambiente
+conda env list --> listar ambientes
+conda remove --name platzi_data --all --> eliminar un ambiente
+jupyter notebook --> iniciar jupyter
+
+	AMBIENTES VIRTUALES (UBUNTU)
+
+which python3 --> muestra el entorno virtual en el que se encuentra ejecutando
+sudo apt install -y python3-venv --> instala la dependencia para crea env (sólo es necesario ejecutarlo una única vez)
+python3 -m venv nombreDelVenv --> crea el ambiente virtual (crear dentro de la carpeta donde está contenido el proyecto)
+source nombreDelVenv/bin/activate --> activar ambiente virtual
+deactivate --> desactiva el ambiente virtual
+pip3 freeze > requirements.txt --> llevar el output de una consulta a un archivo .txt
+cat requirements.txt --> muestra el contenido de un archivo en consola
+pip3 install -r requirements.txt --> instala modulos listados en un .txt
+
+	WEB SERVER FAST API
+
+pip3 install fastapi & pip3 install "uvicorn[standard]" --> librerias para crear el servidor
+@app.get('/') --> definir la ruta en el archivo.py (path operation decorator)
+uvicorn main:app --reload --> iniciar aplicación (main-->nombre archivo, app-->nombre del objeto, --reload-->actualización automática)
+	# https://fastapi.tiangolo.com/ --> documentación de fastapi
+	# Los siguientes pasos son desde el browser
+http://127.0.0.1:8000/ --> localhost (http://localhost:8000/)
+http://127.0.0.1:8000/docs --> documentación interactiva
+http://127.0.0.1:8000/redoc --> documentación interactiva con redoc
+	#"/home/{parametro} --> path paramenter permite declarar una variable dentro del path operation 
+	#"/tweets/{tweet_id}/details?age=30&height=184" --> los query parameters no son obligatorios y se ubican luego de un ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+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
