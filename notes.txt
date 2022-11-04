@@ -1,4 +1,4 @@
-NOTA: NUNCA NUNCA COPIES EL TOKEN DE GITHUB ACÁ
+NOTA: NUNCA NUNCA NUNCA COPIES EL TOKEN DE GITHUB ACÁ
 
 #netsh winsock reset (correr este comando en powershell si UBUNTU no responde) 
 
