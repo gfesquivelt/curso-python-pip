@@ -180,30 +180,3 @@ http://127.0.0.1:8000/redoc --> documentación interactiva con redoc
 	#"/tweets/{tweet_id}/details?age=30&height=184" --> los query parameters no son obligatorios y se ubican luego de un ?
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-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
