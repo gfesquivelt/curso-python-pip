@@ -1,4 +1,6 @@
-netsh winsock reset (correr este comando en powershell si UBUNTU no responde) 
+NOTA: NUNCA NUNCA COPIES EL TOKEN DE GITHUB ACÁ
+
+#netsh winsock reset (correr este comando en powershell si UBUNTU no responde) 
 
 	ESTRUCTURA INICIAL PARA CUALQUIER .py
 
