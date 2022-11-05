@@ -1,8 +1,10 @@
 #Python
 from typing import Optional
+from enum import Enum #Establecer enumeraciones de strings
 
 #Pydantic
 from pydantic import BaseModel
+from pydantic import Field #Este modulo permite establecer validaciones dentro de los elementos de la clase(ex. first_name, last_name, age, etc.)
 
 #fastapi
 from fastapi import FastAPI
@@ -12,17 +14,25 @@ app = FastAPI() #declaración del objeto
 
 #Models
 
+class HairColor(str, Enum):
+    white = "white"
+    blonde = "blonde"
+    brown = "brown"
+    black = "black"
+
 class Location(BaseModel):
     city: str
     state: str
     country: str
 
 class Person(BaseModel):
-    first_name: str
-    last_name: str
-    age: int
-    hair_color: Optional[str] = None #None es el valor tomado por defecto
-    is_married: Optional[bool] = None
+    first_name: str = Field(...,min_length=1,max_length=50)
+    last_name: str = Field(...,min_length=1,max_length=50)
+    age: int = Field(...,gt=0,le=115)
+    #hair_color: Optional[str] = None #Establecer None es el valor tomado por defecto en campos opcionales
+    #hair_color: Optional[HairColor] = Field(default=None) #Se determina que los valores a ingresar sean los de la clase HairColor
+    hair_color: Optional[HairColor] = Field(default=None)
+    is_married: Optional[bool] = Field(default=None)
 
 @app.get("/") #path operation decorator
 def home():
