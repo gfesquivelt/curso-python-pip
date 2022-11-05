@@ -3,8 +3,11 @@ from typing import Optional
 from enum import Enum #Establecer enumeraciones de strings
 
 #Pydantic
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr, PaymentCardNumber, PastDate
 from pydantic import Field #Este modulo permite establecer validaciones dentro de los elementos de la clase(ex. first_name, last_name, age, etc.)
+
+#EmailStr
+#from email_validator import validate_email
 
 #fastapi
 from fastapi import FastAPI
@@ -20,19 +23,28 @@ class HairColor(str, Enum):
     brown = "brown"
     black = "black"
 
+class Country(str,Enum):
+    colombia = "colombia"
+    mexico = "mexico"
+    alemania = "alemania"
+    austria = "austria"
+
 class Location(BaseModel):
-    city: str
-    state: str
-    country: str
+    city: str = Field(default=None, example = "bogota")
+    state: str = Field(default=None, example = "bogota")
+    country: Country = Field(..., example = "colombia")
 
 class Person(BaseModel):
-    first_name: str = Field(...,min_length=1,max_length=50)
-    last_name: str = Field(...,min_length=1,max_length=50)
-    age: int = Field(...,gt=0,le=115)
+    first_name: str = Field(...,min_length=1,max_length=50, example = "Fernando")
+    last_name: str = Field(...,min_length=1,max_length=50, example = "Esquivel")
+    age: int = Field(...,ge=18, example = 20)
+    date_of_birth: PastDate = Field(...)
     #hair_color: Optional[str] = None #Establecer None es el valor tomado por defecto en campos opcionales
     #hair_color: Optional[HairColor] = Field(default=None) #Se determina que los valores a ingresar sean los de la clase HairColor
     hair_color: Optional[HairColor] = Field(default=None)
     is_married: Optional[bool] = Field(default=None)
+    email: EmailStr = Field(...)   
+    card_number: PaymentCardNumber = Field(default=4000000000000002)
 
 @app.get("/") #path operation decorator
 def home():
@@ -85,11 +97,8 @@ def update_person(
         description="This is the person ID",
         gt=0
     ),
-    person: Person = Body(
-        ...),
-        Location: Location = Body(
-        ...
-    )
+    person: Person = Body(...),
+        Location: Location = Body(...)
 ):
     results = person.dict()
     results.update(Location.dict())
