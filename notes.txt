@@ -180,5 +180,40 @@ http://127.0.0.1:8000/docs --> documentación interactiva
 http://127.0.0.1:8000/redoc --> documentación interactiva con redoc
 	#"/home/{parametro} --> path paramenter permite declarar una variable dentro del path operation 
 	#"/tweets/{tweet_id}/details?age=30&height=184" --> los query parameters no son obligatorios y se ubican luego de un ?
+	#Request body: Cuando el cliente se comunica con el servidor
+	#Response body: Cuando el servidor se comunica con el cliente
+	#regex (Regular expressions):
+		ge --> greater or equal than
+		le --> less or equal than
+		gt --> greater than
+		lt --> less than
+	#https://pydantic-docs.helpmanual.io/usage/types/#pydantic-types --> tipos de validaciones que permite PYDANTIC
+
+
+
+
+
+
+
+
+
+
+
+
+	POSTGIS
+
+#ST_Transform permite tener mapas base
+SELECT name, ST_Transform(geom, 4326) from nyc_neighborhoods
+
+#Desde la Terminal ejecutar este comando para descargar shp a sql
+cd C:\Program Files\PostgreSQL\14\bin #cambiar de directorio
+shp2pgsql.exe #ubicarse en la carpeta bin de postgres
+shp2pgsql.exe -s 4326 C:\Users\memo9\Documents\postgresTraining\shp_colombia\departamentos.shp > departamentos.sql
+
+
+
+
+
+
 
 
