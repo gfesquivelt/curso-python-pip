@@ -190,14 +190,68 @@ http://127.0.0.1:8000/redoc --> documentación interactiva con redoc
 	#https://pydantic-docs.helpmanual.io/usage/types/#pydantic-types --> tipos de validaciones que permite PYDANTIC
 
 
+	PANDAS
 
+df_books.sort_values('Year',ascending=False) --> permite ordenar el df por valores de una columna
+pd.DataFrame(dict) --> convertir un diccionario en df
+df_books = pd.read_csv('/content/bestsellers-with-categories_e591527f-ae45-4fa5-b0d1-d50142128fa6.csv',sep = ',',header = 0) --> leer csv e indicar que la primera fila son las columnas
+df_books.columns --> imprimir columnas
+pd.read_json('/content/data_raw.json',typ = 'Series') --> crea un df donde cada fila contiene un objeto del json
+df_books[0:4] --> retornar las primeras 3 filas del df
+df_books[['Name','Author','Year']] --> retornar ciertas columnas del df
+df_books.loc[0:4] --> leer los primeros cinco indices del df
+df_books.loc[0:4, ['Name','Author','Year']] --> retorna ciertas columnas de los primeros cinco indices
+df_books.loc[:,['Reviews']] * 2 --> multiplica todos los indices de una columna por dos
+df_books.iloc[:,0:3] --> retorna todos los indices de las primeras tres columnas
+df_books.iloc[:2,2:] --> retorna las primeras dos filas y de la segunda columna en adelante
+df_books.drop('Genre',axis=1,inplace=True) --> elimina una columna sin crear una variable
+df_books = df_books.drop('Year',axis=1) --> elimina una columna creando una variable
+del df_books['Price'] --> elimina una columna con del
+df_books.drop(3,axis=0) --> elimina el indice 3
+df_books.drop([4,5],axis=0) --> elimina los indices 4 y 5
+df_books.drop(range(0,10),axis=0) --> elimina un rango de indices
+df_books['Nueva_columna'] = np.nan --> crea una columna de valores nulos
+df_books.append(df_books) --> realiza un append entre df
+df.isnull() --> retorna como True los valores nulos
+df.isnull()*1 --> retorna como 1 los valores nulos
+df.fillna('Missing') --> reemplaza los valores nulos con la palabra 'Missing'
+df.fillna(df.mean()) --> llena los valores nulos con la media
+df.interpolate() --> calcula los valores nulos a través de interpolación
+df.dropna() --> elimina filas con valores nulos
+df.dropna(subset=['Col3']) --> elimina valores nulos de determinada columna
+mayor_a_2016 = df_books['Year'] > 2016 --> crea una variable donde el df cumple una condición
+df_books[df_books['Year'] > 2016] --> filtra el df por una condición
+df_books[~mayor_a_2016] --> ~ invierte una condición
+df_books['Author'].value_counts() --> contar valores de una columna
+df_books.groupby('Author').count() --> agrupar y contar valores según un campo
+df_books.groupby('Author').sum().loc['William Davis'] --> realizar estadísticas por un valor
+df_books.groupby('Author').agg(['min', 'max']) --> obtener agregaciones según un campo
+df_books.groupby('Author').agg({'Reviews':['min','max'], 'User Rating': 'sum'}) --> realizar varias operaciones con agregaciones
+pd.concat([df1,df2],ignore_index=True) --> unir dos df con mismas columnas (crece a lo largo)
+pd.concat([df1,df2],axis=1) --> unir dos df con mismas columnas (crece a lo ancho)
+	# por defecto los merge son de tipo inner
+izq.merge(der, on='key') --> realiza un merge según una columna en común con el mismo nombre
+izq.merge(der, left_on='key', right_on='key2') --realiza un merge según una columna en común con diferente nombre
+izq.merge(der, left_on='key', right_on='key2', how='left') --> el how permite establecer el tipo de join
+	# por defecto los join toman los índices
+izq.join(der) --> join entre df, el how lo toma como left
+izq.join(der, how='inner') --> join entre como inner
+izq.join(der, how='outer') --> outer trae todos los datos y completa con NaN
+	# pivot_table tiene la misma función de tablas dinámicas
+df_books.pivot_table(index='Author',columns='Genre',values='User Rating')
+df_books.pivot_table(index='Genre',columns='Year', values='User Rating',aggfunc='mean')
+	# melt toma las columnas de df y las pasa a las filas
+df_books.melt(id_vars='Author',value_vars='Genre')
+	# apply permite aplicar una función a todos values de una columna, por ejemplo:
+	# en este caso se multiplica por dos cada valor de la columna 'User Rating'
+-def two_times(valor):
+-  return valor*2
+-df_books['Rating_2'] = df_books['User Rating'].apply(two_times)
+	# o incluso aplicar funciones con lambda:
+-df_books['Rating_2'] = df_books['User Rating'].apply(lambda x : x *3)
+-df_books['Rating_2'] = df_books.apply(lambda x : x['User Rating'] * 2 if x['Genre'] == 'Fiction' else x['User Rating'], axis=1)
 
-
-
-
-
-
-
+	
 
 
 	POSTGIS
