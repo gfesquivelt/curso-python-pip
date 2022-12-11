@@ -265,6 +265,7 @@ shp2pgsql.exe #ubicarse en la carpeta bin de postgres
 shp2pgsql.exe -s 4326 C:\Users\memo9\Documents\postgresTraining\shp_colombia\departamentos.shp > departamentos.sql
 
 AQUI VAMOS A SEGUIR HACIENDO LOS CAMBIOS DE POSTGIS
+LISTO, TODO CLARO
 
 
 
