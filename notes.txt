@@ -102,23 +102,36 @@ rm -rf directorio --> elimina directirios
 
 	INICIAR REPOSITORIO GIT HUB
 
+# INICIAR EL REPOSITORIO
 git init --> iniciar repositorio en el ambiente local
-git add * OR git add .--> agrega todos los archivos al repositorio local
-git add archivo.txt --> agrega un archivo al repositorio local
+git config --global user.name "fernando" --> asigna nombre de usuario
+git config --global user.email "gfesquivelt@unal.edu.co" --> asigna correo de usuario
+
+# EL ORDEN PARA HACER UN ENVÍO DEL REPOSITORIO LOCAL AL REMOTO ES
 git status --> indica el estado del repositorio
+git add * OR git add .--> agrega todos los archivos al repositorio local
+git commit -m "Escribir comentario" --> realizar commit y comentar
+git config credential.helper store --> utilizar para ALMACENAR CREDENCIALES (utilizar antes de hacer push)
+git push origin master --> envía los archivos del repo local al repo remoto (en caso de ser necesario, generar token)
+
+# EN CASO QUE DESEES CONTINUAR CON UN REPOSITORIO REMOTO EXISTENTE DESDE UN NUEVO PC
+git init --> iniciar repositorio en el ambiente local
+git config --global user.name "fernando" --> asigna nombre de usuario
+git config --global user.email "gfesquivelt@unal.edu.co" --> asigna correo de usuario
+git remote add origin https://github.com/gfesquivelt/curso-python-pip.git --> agregar origen del repositorio remoto
+git pull origin master
+
+git add archivo.txt --> agrega un archivo al repositorio local
 git rm archivo.txt --> para remover archivo del repositorio
 git rm --cached archivo.txt --> borra el cache del archivo
 git config --> muestra las opciones de configuración
 git config --list --> muestra la configuración de mi repositorio
 git config --list --show-origin --> muestra donde están guardadas las configuraciones
-git config --global user.name "fernando" --> asigna nombre de usuario
-git config --global user.email "gfesquivelt@unal.edu.co" --> asigna correo de usuario
 cat archivo.txt --> muestra el contenido del archivo
 git log archivo.txt --> muestra el historial de cambios
 git remote add origin https://github.com/gfesquivelt/curso-python-pip.git --> agregar origen del repositorio remoto
 git remote -v --> muestra el origen del repositorio remoto
-git push origin master --> envía los archivos del repo local al repo remoto (en caso de ser necesario, generar token)
-git clone https://<username>:<githubtoken>@github.com/<username>/<repositoryname>.git --> utilizar esta lógica en caso que no almacene el token
+git clone https://<username>:<githubtoken>@github.com/<username>/<repositoryname>.git --> clonar un repositorio
 
 # NO OLVIDES LA SECUENCIA PARA AGREGAR CAMBIOS AL REPOSITORIO REMOTO
 1) git add . --> agrega cambios al repo local
@@ -264,12 +277,7 @@ cd C:\Program Files\PostgreSQL\14\bin #cambiar de directorio
 shp2pgsql.exe #ubicarse en la carpeta bin de postgres
 shp2pgsql.exe -s 4326 C:\Users\memo9\Documents\postgresTraining\shp_colombia\departamentos.shp > departamentos.sql
 
-AQUI VAMOS A SEGUIR HACIENDO LOS CAMBIOS DE POSTGIS
-LISTO, TODO CLARO
-MAS Y MÁS NOTAS
-Nada nada
-Nada de nada nada
-Miremos si esta vez sí funcionó
+
 
 
 
