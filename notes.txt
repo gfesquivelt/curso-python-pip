@@ -267,6 +267,8 @@ shp2pgsql.exe -s 4326 C:\Users\memo9\Documents\postgresTraining\shp_colombia\dep
 AQUI VAMOS A SEGUIR HACIENDO LOS CAMBIOS DE POSTGIS
 LISTO, TODO CLARO
 MAS Y MÁS NOTAS
+Nada nada
+Nada de nada nada
 
 
 
